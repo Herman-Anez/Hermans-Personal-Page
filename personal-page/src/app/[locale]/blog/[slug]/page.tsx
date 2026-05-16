@@ -25,7 +25,7 @@ import { Posts } from "@/components/blog/Posts";
 import { ShareSection } from "@/components/blog/ShareSection";
 
 export async function generateStaticParams({ params }: { params: { locale: string } }): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "[locale]", "blog", "posts"], params?.locale || "es");
+  const posts = getPosts(["src", "app", "[locale]", "blog", "posts"]);
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -45,7 +45,7 @@ export async function generateMetadata({
   const dict = getDictionary(locale);
   const { blog } = getContent(dict, locale);
 
-  const posts = getPosts(["src", "app", "[locale]", "blog", "posts"], locale);
+  const posts = getPosts(["src", "app", "[locale]", "blog", "posts"]);
   let post = posts.find((post) => post.slug === slugPath);
 
   if (!post) return {};
@@ -69,7 +69,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
   const dict = getDictionary(locale);
   const { blog, person, about } = getContent(dict, locale);
 
-  let post = getPosts(["src", "app", "[locale]", "blog", "posts"], locale).find((post) => post.slug === slugPath);
+  let post = getPosts(["src", "app", "[locale]", "blog", "posts"]).find((post) => post.slug === slugPath);
 
   if (!post) {
     notFound();
@@ -157,7 +157,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             <Text as="h2" id="recent-posts" variant="heading-strong-xl" marginBottom="24">
               Recent posts
             </Text>
-            <Posts exclude={[post.slug]} range={[1, 2]} columns="2" thumbnail direction="column" locale={locale} />
+            <Posts exclude={[post.slug]} range={[1, 2]} columns="2" thumbnail direction="column" />
           </Column>
           <ScrollToHash />
         </Column>

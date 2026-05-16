@@ -68,10 +68,7 @@ function getMDXData(dir: string) {
   });
 }
 
-export function getPosts(customPath = ["", "", "", ""], locale = "es") {
-  let postsDir = path.join(process.cwd(), ...customPath, locale);
-  if (!fs.existsSync(postsDir)) {
-    postsDir = path.join(process.cwd(), ...customPath, "es");
-  }
+export function getPosts(customPath = ["src", "app", "[locale]", "blog", "posts"]) {
+  const postsDir = path.join(process.cwd(), ...customPath);
   return getMDXData(postsDir);
 }

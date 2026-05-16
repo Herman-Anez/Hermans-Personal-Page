@@ -43,13 +43,13 @@ export default async function Blog({ params }: { params: Promise<{ locale: strin
         {blog.title}
       </Heading>
       <Column fillWidth flex={1} gap="40">
-        <Posts range={[1, 1]} thumbnail locale={resolvedParams.locale} />
-        <Posts range={[2, 3]} columns="2" thumbnail direction="column" locale={resolvedParams.locale} />
+        <Posts range={[1, 1]} thumbnail />
+        <Posts range={[2, 3]} columns="2" thumbnail direction="column" />
         <Mailchimp marginBottom="l" />
         <Heading as="h2" variant="heading-strong-xl" marginLeft="l">
           Earlier posts
         </Heading>
-        <Posts range={[4]} columns="2" locale={resolvedParams.locale} />
+        <Posts range={[4]} columns="2" />
       </Column>
     </Column>
   );

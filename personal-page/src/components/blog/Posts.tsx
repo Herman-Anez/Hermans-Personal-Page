@@ -8,7 +8,6 @@ interface PostsProps {
   thumbnail?: boolean;
   direction?: "row" | "column";
   exclude?: string[];
-  locale?: string;
 }
 
 export function Posts({
@@ -17,9 +16,8 @@ export function Posts({
   thumbnail = false,
   exclude = [],
   direction,
-  locale = "es",
 }: PostsProps) {
-  let allBlogs = getPosts(["src", "app", "[locale]", "blog", "posts"], locale);
+  let allBlogs = getPosts(["src", "app", "[locale]", "blog", "posts"]);
 
   // Exclude by slug (exact match)
   if (exclude.length) {
